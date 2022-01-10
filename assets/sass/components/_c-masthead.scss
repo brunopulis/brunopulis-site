@@ -1,0 +1,131 @@
+header.masthead {
+  .page-heading,
+  .post-heading,
+  .site-heading {
+    padding: 200px 0 150px;
+    color: white;
+    @media only screen and (min-width: 768px) {
+      padding: 200px 0;
+    }
+  }
+
+  .page-heading,
+  .site-heading {
+    text-align: center;
+
+    h1 {
+      font-size: 50px;
+      margin-top: 0;
+    }
+
+    .subheading {
+      font-size: 24px;
+      font-weight: 300;
+      line-height: 1.1;
+      display: block;
+      margin: 10px 0 0;
+      // @include sans-serif-font;
+    }
+
+    @media only screen and (min-width: 768px) {
+      h1 {
+        font-size: 80px;
+      }
+    }
+  }
+
+  .post-heading {
+    h1 {
+      font-size: 35px;
+    }
+
+    .meta,
+    .subheading {
+      line-height: 1.1;
+      display: block;
+    }
+
+    .subheading {
+      font-size: 24px;
+      font-weight: 600;
+      margin: 10px 0 30px;
+      // @include sans-serif-font;
+    }
+
+    .meta {
+      font-size: 20px;
+      font-weight: 300;
+      font-style: italic;
+      //@include serif-font;
+      a {
+        color: $white;
+      }
+    }
+
+    @media only screen and (min-width: 768px) {
+      h1 {
+        font-size: 55px;
+      }
+      .subheading {
+        font-size: 30px;
+      }
+    }
+  }
+}
+
+.masthead {
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+  background: #111;
+  color: white;
+}
+
+.masthead__link {
+  align-items: center;
+  border-radius: 4px;
+  border-radius: 9999px;
+  border-style: solid;
+  border-width: 3px;
+  border: 0;
+  cursor: pointer;
+  display: inline-block;
+  display: inline-flex;
+  font-size: inherit;
+  font-weight: 600;
+  justify-content: space-evenly;
+  line-height: inherit;
+  min-width: 10rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms ease;
+}
+
+.masthead__link--secondary {
+  background: #000;
+  color: #fd0;
+}
+
+.masthead__link--primary {
+  background: #fd0;
+  color: #000;
+}
+
+.masthead__link--outline {
+  border: 2px solid #fd0;
+  color: #fff;
+}
+
+.featured-blog {
+  padding: 60px 0;
+}
+
+.card a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}

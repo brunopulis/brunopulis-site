@@ -1,0 +1,24 @@
+.page-numbers {
+  background: #274c77;
+  margin: 0 5px;
+  padding: 10px 15px;
+}
+
+.page-numbers > li > a {
+  color: white;
+  text-decoration: none;
+}
+
+.page-numbers > li > a:hover,
+.page-numbers > li > a:focus {
+  background-color: #ea9010;
+  color: $white;
+  text-decoration: none;
+}
+
+ul.page-numbers > li > span.current,
+ul.page-numbers > li > span.current:hover,
+ul.page-numbers > li > span.current:focus {
+  background-color: #ea9010;
+  border-color: #ea9010;
+}

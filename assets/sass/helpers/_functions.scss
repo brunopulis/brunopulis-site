@@ -1,0 +1,154 @@
+// ==========================================================================
+// Funções
+// ==========================================================================
+
+/// Converte valores para porcentagem de acordo com o contexto.
+/// Atribui porcentagem a um contexto definido.
+///
+/// @author Samuel <samuel@vianetbrasil.com.br>
+/// @param  {Number} $target - contexto que será definido a porcentagem
+/// @param  {*} $container [$wrapper]
+///
+@function v-porcento($target, $container: $wrapper) {
+  @return ($target / $container) * 100%;
+}
+
+/// Converte para unidade de medida vw
+///
+/// @author Samuel <samuel@vianetbrasil.com.br>
+/// @link  https://www.sitepoint.com/css-viewport-units-quick-start/
+/// @param {Number} $target - contexto que será aplicada a conversão
+/// @param {*} $container [$wrapper] - tamanho total do `wrapper` definido
+/// @example
+///  v-calc-vw(200) => 16.6666666667vw
+///  v-calc-vw(100) => 8.3333333333vw
+///
+@function v-calc-vw($target, $container: $wrapper) {
+  @return unquote((($target / $container) * 100)+'vw');
+}
+
+/// Trata contraste do texto.
+///
+/// Ao ser selecionado determinado texto a function
+/// verifica aonde aplicar o constrate para melhorar a visibilidade.
+///
+/// @author Samuel <samuel@vianetbrasil.com.br>
+/// @group function
+/// @param  {Color} $color-base - Cor base do site
+/// @return {Color} - cor com contraste aplicado.
+/// @example
+///   v-color(#f0f0f0) => #000
+///   v-color(#1b749a) => #fff
+///
+@function v-color($color-base) {
+  @if (lightness($color-base) > 50) {
+    @return $preto;
+  } @else {
+    @return $branco;
+  }
+}
+
+/// Calcula line-height
+///
+/// Baseado na declaração do tamanho do `font-size` retorna o `line-height`
+///
+/// @group  functions
+/// @author Samuel <samuel@vianetbrasil.com.br>
+/// @param {Number} $line-height -
+/// @param {Number} $fonte -
+@function v-line-height($line-height, $fonte) {
+  $line-height: strip-unit($line-height);
+  $fonte: strip-unit($fonte);
+  $line-height: ($line-height / $fonte);
+
+  @return decimal-round($line-height, 2, floor);
+}
+
+/// Converte unidade de medida 'px' para 'em'
+///
+/// @group  functions
+/// @author Samuel <samuel@vianetbrasil.com.br>
+/// @param  {Number} $pixel - tamanho em pixels
+/// @param  {Number} $padrao [16] - tamanho definido como padrão
+/// @return {Number} valor convertido para 'em'
+/// @example
+///   em(16px)  => 1em
+///   em(20px)  => 1.250em
+///   em(12px)  => .750em
+///
+@function em($pixel, $padrao: 16) {
+  @if (unitless($pixel)) {
+    $pixel: $pixel * 1px;
+  }
+
+  @if (unitless($padrao)) {
+    $padrao: $padrao * 1px;
+  }
+
+  @return $pixel / $padrao * 1em;
+}
+
+/// Remova a unidade de um comprimento
+///
+/// @author   Samuel
+/// @group    functions
+/// @param    {Number} $number número para retirar a unidade
+/// @return   {Number} número sem unidade
+/// @example
+///   strip-unit(-16px)        => -16
+///   strip-unit(0.5em)        => 0.5
+///   strip-unit(0.5cm + 10mm) => 1.5
+///
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+/// Arredondar um número para os dígitos especificados.
+///
+/// @author Samuel <samuel@vianetbrasil.com.br>
+/// @group functions
+/// @param {Number} $number - Um número para arrendodar.
+/// @param {Number} $digits [0] - dígitos de saída
+/// @param {String} [$mode:round] (round|ceil|floor) como arrendondar um número
+/// @return {Number} Um número arrendodado
+///
+/// @example
+///   decimal-round(0.333)    => 0
+///   decimal-round(0.333, 1) => 0.3
+///   decimal-round(0.333, 2) => 0.33
+///   decimal-round(0.666)    => 1
+///   decimal-round(0.666, 1) => 0.7
+///   decimal-round(0.666, 2) => 0.67
+///
+@function decimal-round($number, $digits: 0, $mode: round) {
+  $n: 1;
+
+  @if type-of($number) != number {
+    @warn '#{ $number } is not a number.';
+    @return $number;
+  }
+
+  // $digits must be a unitless number
+  @if type-of($digits) != number {
+    @warn '#{ $digits } is not a number.';
+    @return $number;
+  } @else if not unitless($digits) {
+    @warn '#{ $digits } has a unit.';
+    @return $number;
+  }
+
+  @for $i from 1 through $digits {
+    $n: $n * 10;
+  }
+
+  @if $mode == round {
+    @return round($number * $n) / $n;
+  } @else if $mode == ceil {
+    @return ceil($number * $n) / $n;
+  } @else if $mode == floor {
+    @return floor($number * $n) / $n;
+  } @else {
+    @warn '#{ $mode } is undefined keyword.';
+    @return $number;
+  }
+}

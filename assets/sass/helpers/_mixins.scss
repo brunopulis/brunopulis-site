@@ -1,0 +1,116 @@
+// =======================================================
+// MIXINS
+// =======================================================
+
+/// Tipografia responsiva
+///
+/// Realiza cálculo para tipografia responsiva, ao utilizar este mixin
+/// é desnecessário gerar `media-queries` específicos para tipografia.
+///
+/// @group helpers
+///
+/// @param {Length} $min-font-size   - Tamanho mínimo da fonte
+/// @param {Length} $max-font-size   - Tamanho máximo da fonte
+/// @param {Length} $min-vw [400px]  - Tamanho mínimo de viewport
+/// @param {Length} $max-vw [1000px] - Tamanho máximo de viewport
+///
+/// @example scss
+///   .heading__title {
+///     @include v-fonte-fluid(14px, 25px, 320px, 1200px);
+///   }
+///
+
+@mixin ofc-font-fluid($min-font-size, $max-font-size, $min-vw: 320px, $max-vw: 1920px) {
+  @if unit($min-font-size) == '' {
+    $min-font-size: $min-font-size * 1px;
+  }
+  @if unit($max-font-size) == '' {
+    $max-font-size: $max-font-size * 1px;
+  }
+  @if unit($min-vw) == '' {
+    $min-vw: $min-vw * 1px;
+  }
+  @if unit($max-vw) == '' {
+    $max-vw: $max-vw * 1px;
+  }
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      @media (min-width: $min-vw) {
+        font-size: calc(
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+            ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+        );
+      }
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  }
+}
+
+/// Placeholder para elementos html
+///
+/// @group helpers
+/// @author Samuel
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+/// Transições
+///
+/// Animações através de transições.
+///
+/// @group helpers
+/// @author Samuel
+///
+/// @param {Number} $tempo [0.3s]  - duração da transição
+///
+/// @example scss
+///   .foo {
+///     @include v-transition();
+///   }
+
+@mixin ofc-transition($tempo: 0.3s) {
+  transition-property: all;
+  transition-duration: $tempo;
+  transition-timing-function: linear;
+}
+
+
+/// Page titles
+///
+/// Estilo padrão de títulos
+
+@mixin ofc-page-title() {
+  color: $black;
+  font-family: $font-stack-sans-cursive;
+  font-weight: bold;
+  letter-spacing: 6.67px;
+  padding-top: 40px;
+  text-transform: uppercase;
+
+  @include ofc-font-fluid(18px, 100px);
+
+  @media(max-width: 768px) {
+    letter-spacing: normal;
+  }
+}
+

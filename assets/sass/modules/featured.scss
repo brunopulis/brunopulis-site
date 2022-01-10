@@ -1,0 +1,54 @@
+//--------------------------------------------------------------
+// Featured Services
+// --------------------------------------------------------------
+
+.featured-services {
+  padding: 60px 0;
+}
+
+.featured-services .icon-box {
+  background: $white;
+  border-radius: 4px;
+  border: 1px solid #f9f9fa;
+  color: #274c77;
+  height: 100%;
+  padding: 20px;
+  transition: 0.3s;
+}
+
+.featured-services .icon {
+  margin: 0 0 15px 0;
+}
+
+.featured-services .icon span {
+  color: #274c77;
+  font-size: 60px;
+}
+
+.featured-services__title {
+  font-weight: 900;
+  margin-bottom: 15px;
+  @include rfs(1.5625rem);
+}
+
+.featured-services .icon-box:hover {
+  border-color: #eaecef;
+}
+
+.featured-services .description {
+  line-height: 24px;
+  font-size: 14px;
+}
+
+// Lists
+.featured-services__list {
+  display: inline-block;
+  list-style: none;
+  margin: 0;
+  padding: 20px;
+  text-align: start;
+}
+
+.featured-services__item {
+  font-size: 23px;
+}

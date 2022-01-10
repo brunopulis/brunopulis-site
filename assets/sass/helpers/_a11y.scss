@@ -1,0 +1,24 @@
+// ============================================================
+// Accessibility
+// ============================================================
+
+.skip-links {
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__links {
+    background-color: $base-color;
+    color: $white;
+    font-weight: bold;
+    padding: 0.5em 0.75em;
+    position: absolute;
+    top: -3em;
+    text-decoration: none;
+
+    &:focus { top: 0; }
+  }
+}
+

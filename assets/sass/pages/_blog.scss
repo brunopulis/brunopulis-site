@@ -1,0 +1,23 @@
+// --------------------------------------------------------------
+// # Blog
+// --------------------------------------------------------------
+
+.blog__header {
+  padding: 20px 0;
+}
+
+.blog__header h1 {
+  font-size: 5rem;
+}
+
+.entry-content > * + ol,
+.entry-content > * + p,
+.entry-content > * + ul,
+.entry-listing-descr > * + ol,
+.entry-listing-descr > * + p,
+.entry-listing-descr > * + ul,
+body#tinymce > * + ol,
+body#tinymce > * + p,
+body#tinymce > * + ul {
+  margin-top: 1.2em;
+}

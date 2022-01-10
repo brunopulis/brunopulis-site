@@ -1,0 +1,27 @@
+// =================================================================
+// Back to top button
+// =================================================================
+
+.back-to-top {
+  background: #274c77;
+  border-radius: 4px;
+  bottom: 15px;
+  height: 40px;
+  position: fixed;
+  right: 15px;
+  transition: all 0.4s;
+  text-decoration: none;
+  width: 40px;
+  z-index: 996;
+}
+
+.back-to-top span {
+  font-size: 24px;
+  color: #fff;
+  line-height: 0;
+}
+
+.back-to-top:hover {
+  background: #274c77;
+  color: #fff;
+}
