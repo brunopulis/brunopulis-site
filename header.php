@@ -32,7 +32,7 @@
 		</div>
 	</a>
 
-	<nav class="site-header navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+	<nav class="site-header navbar fixed-top navbar-expand-lg navbar-dark bg-dark" id="nav-top">
 		<div class="container d-flex">
 			<a href="<?php bloginfo('url') ?>/" class="navbar-brand">Bruno Pulis</a>
 

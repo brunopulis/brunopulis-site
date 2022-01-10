@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying all pages.
  *
@@ -12,29 +13,29 @@
 
 get_header(); ?>
 
-	<main id="content">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<?php odin_breadcrumbs(); ?>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col">
-					<?php
-						while ( have_posts() ) : the_post();
-							get_template_part( 'content', 'page' );
-
-							if ( comments_open() || get_comments_number() ) :
-								comments_template();
-							endif;
-						endwhile;
-					?>
-				</div>
+<main class="main-content" id="main-content">
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<?php odin_breadcrumbs(); ?>
 			</div>
 		</div>
-	</main><!-- #main -->
+
+		<div class="row">
+			<div class="col">
+				<?php
+				while (have_posts()) : the_post();
+					get_template_part('content', 'page');
+
+					if (comments_open() || get_comments_number()) :
+						comments_template();
+					endif;
+				endwhile;
+				?>
+			</div>
+		</div>
+	</div>
+</main><!-- #main -->
 
 <?php
 get_footer();

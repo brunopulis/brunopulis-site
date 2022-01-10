@@ -66,9 +66,6 @@
     </div>
   </div>
 </footer>
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center active" aria-label="Ir para o topo">
-  <span class="fa fa-chevron-up" aria-hidden="true"></span>
-</a>
 </body>
 
 </html>
